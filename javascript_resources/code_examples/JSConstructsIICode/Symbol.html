@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>JS Example</title>
+</head>
+
+<body>
+	<script>
+	"use strict";
+ 
+	let sym = Symbol("firstSymbol");
+
+	document.writeln(String(sym) + "<br>"); /* implicit convertion does not work */
+	document.writeln(sym.toString() + "<br>"); /* implicit convertion does not work */
+
+	let sym2 = Symbol("firstSymbol");
+	if (sym === sym2) {
+		document.writeln("Symbols the same<br>");
+	} else {
+		document.writeln("Symbols are different<br>");
+	}
+	document.writeln("typeof sym: " + typeof sym + "<br>");
+	
+	/* symbol as property key */
+	let KEY_TO_USE = Symbol();
+	let myObj = { name: "Mike", [KEY_TO_USE]: 789 };
+	document.writeln("myObj[KEY_TO_USE]: " + myObj[KEY_TO_USE]);
+	
+	let MESSAGE = Symbol();
+	let testudo = {
+		[MESSAGE]() { return 'Fear the turtle'; }
+	};
+	document.writeln("<br>Message is " + testudo[MESSAGE]() + "<br>");
+	
+	const COLOR_RED = Symbol("Red");
+	const COLOR_BLUE = Symbol("Blue");
+	document.writeln("Boolean(COLOR_RED): " + Boolean(COLOR_RED) + "<br>");
+	
+	</script>
+</body>
+</html>

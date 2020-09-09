@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS Example</title>
+</head>
+
+<body>
+	<script>
+	"use strict";
+     
+	 /* Notice the use of const instead of let */
+	 const mySet = new Set();
+	 const student = {name: "Mike", id: 10};
+	 const student2 = {name: "Rose", id: 20};
+	 mySet.add(150);
+	 mySet.add(student).add(student2);  /* add is chainable */
+	 
+	 document.writeln("150 part of the set? " + mySet.has(150) + "<br>");
+	 document.writeln("Set size: " + mySet.size + "<br>");
+	 document.writeln("Set Entries<br>");
+	 for (let entry of mySet) {
+		document.writeln(entry + "<br>");
+	 }
+	 
+	 document.writeln("After deleting entry<br>");
+	 mySet.delete(student);
+	 for (let entry of mySet) {
+		document.writeln(entry + "<br>");
+	 }
+	 
+	 document.writeln("After clearing the set<br>");
+	 mySet.clear();
+	 for (let entry of mySet) {
+		document.writeln(entry + "<br>");
+	 }
+	 
+	 document.writeln("Set based on array<br>");
+	 let anotherSet = new Set(["C", "JavaScript", "Pascal"]);
+	 for (const entry of anotherSet) {
+        document.writeln(entry);
+     }
+	 
+	</script>
+</body>
+</html>

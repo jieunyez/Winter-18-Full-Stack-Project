@@ -1,0 +1,5 @@
+# For Mac users
+.DS_STORE
+
+# never install 3rd party libraries
+node_modules

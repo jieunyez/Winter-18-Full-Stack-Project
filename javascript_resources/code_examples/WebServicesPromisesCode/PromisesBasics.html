@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Example</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <script>
+            const promise = new Promise((resolve, reject) => {
+                document.writeln("executor started<br>");
+                const asyncTaskSucceded = true; 
+                
+                /* Simulates asynch task delay; whether it succeeds or not based on asyncTaskSucceded */
+                const delay = 2000; 
+                setTimeout(() => {
+                    alert("async task completed");
+                    if (asyncTaskSucceded) {
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                }, delay);
+            });
+            
+            function ifSuccessful() {
+                alert("Yes, task finished successfully and now we will use results for further processing");
+            }
+            
+            function ifItFails(args) {
+                alert("Task failed and we will perform this processing in this case");
+            }
+            
+            promise.then(ifSuccessful, ifItFails);
+            
+            
+        </script>
+    </body>
+</html>

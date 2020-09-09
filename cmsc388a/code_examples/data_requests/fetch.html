@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta charset="utf-8">
+  <title>Fetch Example</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+ 
+<body>
+  <div id="container"></div>
+ 
+  <script type="text/babel">
+    const API = 'https://hn.algolia.com/api/v1/search?query=';
+    const DEFAULT_QUERY = 'redux';
+
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = {
+          hits: [],
+        };
+      }
+
+      componentDidMount() {
+        console.log('App component mounted!');
+        console.log(API+DEFAULT_QUERY);
+        fetch(API + DEFAULT_QUERY)
+          .then(response => response.json())
+          .then(data => this.setState({ hits: data.hits }));
+      }
+
+      componentDidUpdate(currentProps, currentState) {
+        console.log("componentDidUpdate: Component just updated!");
+      }
+
+      componentWillUpdate(currentProps, currentState) {
+        console.log("componentWillUpdate: Component about to update!");
+      }
+      render() {
+        console.log('rendering the app component');
+        const { hits } = this.state;
+
+        return (
+          <ul>
+            {hits.map(hit =>
+              <li key={hit.objectID}>
+                <a href={hit.url}>{hit.title}</a>
+              </li>
+            )}
+          </ul>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <App/>,
+      document.querySelector("#container")
+    );
+  </script>
+</body>
+ 
+</html>
