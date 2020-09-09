@@ -1,1 +1,0 @@
-console.log("executing the foo command");

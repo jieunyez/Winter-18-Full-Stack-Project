@@ -1,5 +1,0 @@
-# only relevant for Mac systems
-.DS_STORE
-
-#ingore npm packages
-node_modules
